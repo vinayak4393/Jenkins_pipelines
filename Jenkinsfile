@@ -13,7 +13,7 @@ pipeline{
 
             }
         }
-                stage('stage 2') {
+        stage('stage 2') {
             steps{
                 echo "This is my first pipeline"
                 echo "This is build stage"
