@@ -13,5 +13,12 @@ pipeline{
 
             }
         }
+                stage('stage 2') {
+            steps{
+                echo "This is my first pipeline"
+                echo "This is build stage"
+                sleep 10   
+            }
+        }
     }
 }
