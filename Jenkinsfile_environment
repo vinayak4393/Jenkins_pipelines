@@ -1,0 +1,27 @@
+pipeline{
+    agent any
+
+    environment {
+        APP='frontend'
+        ENV='prod'
+    }
+
+    stages{
+        stage('CHECKOUT') {
+            steps{
+                echo "Groovy --> APP_TYPE: $APP TARGET_ENV: $ENV"
+                sh '''
+                echo "Shell --> APP_TYPE: $APP TARGET_ENV: $ENV"
+                '''               
+            }
+        }
+        stage('BUILD') {              
+            steps{
+                echo "Groovy --> APP_TYPE: $APP TARGET_ENV: $ENV"
+                sh '''
+                echo "Shell --> APP_TYPE: $APP TARGET_ENV: $ENV"
+                '''               
+            }
+        }
+    }
+}
