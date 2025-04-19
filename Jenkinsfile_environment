@@ -11,7 +11,7 @@ pipeline{
             steps{
                 echo "Groovy --> APP_TYPE: $APP TARGET_ENV: $ENV"
                 script{
-                    echo "Groovy --> APP_TYPE: ${env.$APP} TARGET_ENV: ${env.$ENV}"
+                    echo "Groovy --> APP_TYPE: ${env.APP} TARGET_ENV: ${env.ENV}"
                 }
                 sh '''
                 echo "Shell --> APP_TYPE: $APP TARGET_ENV: $ENV"
@@ -22,7 +22,7 @@ pipeline{
             steps{
                 echo "Groovy --> APP_TYPE: $APP TARGET_ENV: $ENV"
                 script{
-                    echo "Groovy --> APP_TYPE: ${env.$APP} TARGET_ENV: ${env.$ENV}"
+                    echo "Groovy --> APP_TYPE: ${env.APP} TARGET_ENV: ${env.ENV}"
                 }
                 sh '''
                 echo "Shell --> APP_TYPE: $APP TARGET_ENV: $ENV"
