@@ -5,7 +5,7 @@ pipeline{
 
     stages{
         stage('CHECKOUT') {
-            
+
             environment {
                 APP='frontend'
                 ENV='prod'
@@ -22,7 +22,13 @@ pipeline{
                 '''               
             }
         }
-        stage('BUILD') {              
+        stage('BUILD') {    
+
+            environment {
+                APP='frontend'
+                ENV='prod'
+            }
+
             steps{
                 echo "Groovy --> APP_TYPE: $APP TARGET_ENV: $ENV"
                 script{
