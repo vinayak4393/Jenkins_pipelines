@@ -1,15 +1,21 @@
 pipeline{
-    agent { label 'slave1'
-    }
+    agent none
 
     stages{
-        stage('stage 1') {           
+        stage('stage 1') {  
+            agent { 
+                label 'slave2'
+            }         
             steps{
-                echo "This is checkout stage"               
+                echo "This is checkout stage" 
+                sleep 5              
             }
         }
         stage('stage 2') {
-            steps{               
+            agent { 
+                label 'slave2'
+            } 
+            steps{   
                 echo "This is build stage"
                 sleep 10   
             }
