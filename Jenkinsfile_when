@@ -17,7 +17,7 @@ pipeline{
             when{
                 expression{
                     return params.BRANCH == 'main' &&
-                    return params.BRANCH <> 'test'
+                    return params.BRANCH != 'test'
                 }
             }       
             steps{
