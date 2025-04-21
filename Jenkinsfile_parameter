@@ -2,17 +2,17 @@ pipeline{
     agent any
 
     parameters{
-        booleanParam(name:'BUILD', defaultValue:true, description:"Do you want to deploy")
+        booleanParam(name:'BUILD', defaultValue:true, description:"Do you want to deploy ? ")
         string (name: 'BRANCH_NAME', defaultValue: 'main', description: 'Enter branch name to deploy', trim: true)
-        choice (name: 'ENV_DEPLOY', choices: ['test', 'qa', 'staging', 'prod'], description: 'Choose an environment')
+        choice (name: 'ENV_DEPLOY', choices: ['test', 'qa', 'staging', 'prod'], description: 'Choose an environment to deploy')
     }
 
     stages{
         stage('CHECKOUT') {
             steps{                
-                echo "Groovy --> BRANCH: ${BRANCH_NAME}"
+                echo "Groovy --> BRANCH: ${params.BRANCH_NAME}"
                 script{
-                    echo "Groovy --> BRANCH: ${BRANCH_NAME}"
+                    echo "Groovy --> BRANCH: ${params.BRANCH_NAME}"
                 }
                 sh '''
                 echo "Shell --> BRANCH: $BRANCH_NAME"
@@ -23,9 +23,9 @@ pipeline{
 
         
             steps{
-                echo "Groovy --> BUILD: ${BUILD}"
+                echo "Groovy --> BUILD: ${params.BUILD}"
                 script{
-                    echo "Groovy --> BUILD: ${BUILD}"
+                    echo "Groovy --> BUILD: ${params.BUILD}"
                 }
                 sh '''
                 echo "Shell --> BUILD: $BUILD"
@@ -36,9 +36,9 @@ pipeline{
 
         
             steps{
-                echo "Groovy --> ENV_DEPLOY: ${ENV_DEPLOY}"
+                echo "Groovy --> ENV_DEPLOY: ${params.ENV_DEPLOY}"
                 script{
-                    echo "Groovy --> ENV_DEPLOY: ${ENV_DEPLOY}"
+                    echo "Groovy --> ENV_DEPLOY: ${params.ENV_DEPLOY}"
                 }
                 sh '''
                 echo "Shell --> ENV_DEPLOY: $ENV_DEPLOY"
