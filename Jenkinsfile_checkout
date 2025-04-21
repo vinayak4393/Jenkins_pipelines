@@ -35,14 +35,14 @@ pipeline{
                 '''               
             }
         }
-        stage('CHECKOUT 2') {
+        stage('CHECKOUT prod') {
             steps{                                
-                git branch: 'main', 
+                git branch: 'prod', 
                     credentialsId: 'my_id', 
                     url: 'https://github.com/vinayak4393/Jenkins_pipelines.git'                                                
             }
         }
-        stage('CHECK CHECKOUT 2') {            
+        stage('CHECK CHECKOUT prod') {            
             steps{
                
                 sh '''
