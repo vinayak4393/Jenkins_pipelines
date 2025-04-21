@@ -1,0 +1,56 @@
+pipeline{
+    agent any
+
+    // parameters{
+    //     booleanParam(name:'BUILD', defaultValue:true, description:"Do you want to deploy ? ")
+    //     string (name: 'BRANCH_NAME', defaultValue: 'main', description: 'Enter branch name to deploy', trim: true)
+    //     choice (name: 'ENV_DEPLOY', choices: ['test', 'qa', 'staging', 'prod'], description: 'Choose an environment to deploy')
+    // }
+
+    stages{
+        stage('CHECKOUT 1') {
+            steps{                
+                checkout scmGit(branches: [[name: '*/main']], 
+                                userRemoteConfigs: [[credentialsId: 'my_id',
+                                                    url: 'https://github.com/vinayak4393/Jenkins_pipelines.git']])                                               
+            }
+        }
+        stage('CHECK CHECKOUT 1') {            
+            steps{
+               
+                sh '''
+                    pwd
+                    git branch
+                    ls -lrt
+                '''               
+            }
+        }
+        stage('CHECK CHECKOUT 2') {            
+            steps{
+               
+                sh '''
+                    pwd
+                    git branch
+                    ls -lrt
+                '''               
+            }
+        }
+        stage('CHECKOUT 2') {
+            steps{                                
+                git branch: 'main', 
+                    credentialsId: 'my_id', 
+                    url: 'https://github.com/vinayak4393/Jenkins_pipelines.git'                                                
+            }
+        }
+        stage('CHECK CHECKOUT 2') {            
+            steps{
+               
+                sh '''
+                    pwd
+                    git branch
+                    ls -lrt
+                '''               
+            }
+        }        
+    }
+}
