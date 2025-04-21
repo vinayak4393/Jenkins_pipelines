@@ -1,0 +1,41 @@
+pipeline{
+    agent any
+
+    parameters{
+        choice (name: 'BRANCH', choices: ['main', 'production'], description: 'Choose an environment to deploy')
+    }
+
+    stages{
+        stage('CHECKOUT') {
+            steps{                
+                git branch: 'main', 
+                    credentialsId: 'my_id', 
+                    url: 'https://github.com/vinayak4393/Jenkins_pipelines.git'             
+            }
+        }
+        stage('BUILD MAIN') {     
+            when{
+                expression{
+                    return params.BRANCH == 'main' &&
+                    return params.BRANCH != 'test'
+                }
+            }       
+            steps{
+                sh '''
+                echo "Shell --> BRANCH: ${BRANCH}"
+                '''               
+            }
+        }
+        stage('BUILD_PROD') {    
+            when{
+                expression { return params.BRANCH == 'production'}
+            }
+        
+            steps{
+                sh '''
+                echo "Shell --> BRANCH: ${BRANCH}"
+                '''               
+            }
+        }
+    }
+}
