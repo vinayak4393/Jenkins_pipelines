@@ -16,8 +16,7 @@ pipeline{
         stage('BUILD MAIN') {     
             when{
                 expression{
-                    return params.BRANCH == 'main' &&
-                    return params.BRANCH != 'test'
+                    params.BRANCH == 'main' && params.BRANCH != 'test'
                 }
             }       
             steps{
@@ -28,7 +27,7 @@ pipeline{
         }
         stage('BUILD_PROD') {    
             when{
-                expression { return params.BRANCH == 'production'}
+                expression { params.BRANCH == 'production'}
             }
         
             steps{
