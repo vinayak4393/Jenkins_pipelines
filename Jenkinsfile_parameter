@@ -1,0 +1,49 @@
+pipeline{
+    agent any
+
+    parameters{
+        booleanParam(name:'BUILD', defaultValue:true, description:"Do you want to deploy")
+        string (name: 'BRANCH_NAME', defaultValue: 'main', description: 'Enter branch name to deploy', trim: true)
+        choice (name: 'ENV_DEPLOY', choices: ['test', 'qa', 'staging', 'prod'], description: 'Choose an environment')
+    }
+
+    stages{
+        stage('CHECKOUT') {
+            steps{                
+                echo "Groovy --> BRANCH: ${BRANCH_NAME}"
+                script{
+                    echo "Groovy --> BRANCH: ${BRANCH_NAME}"
+                }
+                sh '''
+                echo "Shell --> BRANCH: $BRANCH_NAME"
+                '''               
+            }
+        }
+        stage('BUILD') {    
+
+        
+            steps{
+                echo "Groovy --> BUILD: ${BUILD}"
+                script{
+                    echo "Groovy --> BUILD: ${BUILD}"
+                }
+                sh '''
+                echo "Shell --> BUILD: $BUILD"
+                '''               
+            }
+        }
+        stage('DEPLOY') {    
+
+        
+            steps{
+                echo "Groovy --> ENV_DEPLOY: ${ENV_DEPLOY}"
+                script{
+                    echo "Groovy --> ENV_DEPLOY: ${ENV_DEPLOY}"
+                }
+                sh '''
+                echo "Shell --> ENV_DEPLOY: $ENV_DEPLOY"
+                '''               
+            }
+        }
+    }
+}
