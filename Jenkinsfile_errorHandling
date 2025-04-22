@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Example') {
+            steps {
+                script {
+                    try {
+                        // Code that might throw an exception
+                        sh 'some-command-that-might-fail'
+                    } catch (Exception e) {
+                        // Handling the exception
+                        echo "Caught an exception: ${e.message}"
+                        // You might also want to mark the build as failed
+                        currentBuild.result = 'FAILURE'
+                    } finally {
+                        // Optional: Code that will be executed regardless of whether there was an exception or not
+                        echo "Cleaning up resources..."
+                    }
+                }
+            }
+        }
+    }
+}
