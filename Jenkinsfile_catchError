@@ -1,0 +1,23 @@
+pipeline{
+    agent any
+
+    stages{
+        stage('CHECKOUT 1') {
+            steps{                
+                catchError(stageResult:'FAILURE', buildResult:'SUCCESS'){
+                    sh 'exit 1'
+                }                                               
+            }
+        }
+        stage('CHECK CHECKOUT 1') {            
+            steps{
+               
+                sh '''
+                    pwd
+                    git branch
+                    ls -lrt
+                '''               
+            }
+        }     
+    }
+}
