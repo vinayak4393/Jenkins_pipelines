@@ -1,6 +1,9 @@
 pipeline{
     agent any
 
+    // parameter is way to pass input to a job or pipeline at runtime.
+    // This allows you to customize the behaviour of your builds without changing code
+
     parameters{
         booleanParam(name:'BUILD', defaultValue:true, description:"Do you want to deploy ? ")
         string (name: 'BRANCH_NAME', defaultValue: 'main', description: 'Enter branch name to deploy', trim: true)
