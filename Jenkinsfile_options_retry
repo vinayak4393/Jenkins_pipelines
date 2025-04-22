@@ -1,0 +1,17 @@
+pipeline{
+    agent any
+
+    options{
+        retry(4)  //retry upto 4 times on failure 
+    }
+
+    stages{
+        stage('BUILD') {
+            steps{                
+                echo "building step to check retry"
+                    sh 'exit 1'
+                }                                               
+            }
+        }    
+    }
+}
