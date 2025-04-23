@@ -6,7 +6,7 @@ pipeline{
     stages{
         stage('STAGE 1') {
             steps{                
-                try{
+                try {
                 echo "This run only if user config"
                 sh 'ls -lrt'
                 } catch (error) {
