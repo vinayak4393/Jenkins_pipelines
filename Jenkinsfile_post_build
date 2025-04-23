@@ -16,6 +16,7 @@ pipeline{
                     pwd
                     git branch
                     ls -lrt
+                    exit 1
                 '''               
             }
         }
