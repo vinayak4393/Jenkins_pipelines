@@ -9,7 +9,7 @@ pipeline{
                 script {                
                     try {
                     echo "This run only if user config"
-                    sh 'ls -lrt'
+                    sh 'ls -lrt ; exit'
                     } catch (error) {
                         stage1Result = false  
                     }              
