@@ -1,0 +1,58 @@
+boolean stage1Result = true
+
+pipeline{
+    agent any
+
+    stages{
+        stage('STAGE 1') {
+            steps{                
+                try{
+                echo "This run only if user config"
+                sh 'ls -lrt'
+                } catch (error) {
+                    stage1Result = false        
+                }
+            }                                               
+        }
+        stage('STAGE 2') {
+            when {
+                expression {
+                    return stage1Result == false
+                }
+            }            
+            steps{
+               
+                sh '''
+                                   
+                echo "Run when  stage1 is failure"
+                    
+                '''               
+            }
+        }
+        stage('STAGE 3') {
+            when {
+                expression {
+                    return stage1Result == true
+                }
+            }            
+            steps{
+               
+                sh '''
+                                   
+                echo "Run when  stage1 is success"
+                    
+                '''               
+            }
+        }
+    }    
+    post {
+            success {
+                echo "post action on success"
+            } 
+            failure {
+                echo "post action on failure"
+            }           
+                
+    }
+}    
+
