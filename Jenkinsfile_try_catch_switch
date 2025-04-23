@@ -5,12 +5,14 @@ pipeline{
 
     stages{
         stage('STAGE 1') {
-            steps{                
-                try {
-                echo "This run only if user config"
-                sh 'ls -lrt'
-                } catch (error) {
-                    stage1Result = false        
+            steps{
+                script {                
+                    try {
+                    echo "This run only if user config"
+                    sh 'ls -lrt'
+                    } catch (error) {
+                        stage1Result = false  
+                    }              
                 }
             }                                               
         }
