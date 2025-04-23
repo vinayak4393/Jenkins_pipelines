@@ -29,11 +29,9 @@ pipeline{
             } 
             always {
                 echo "post action always"
+                cleansWs
             }
-            always{
-                cleansWs()
-            }     
-
+                
     }
 }    
 
