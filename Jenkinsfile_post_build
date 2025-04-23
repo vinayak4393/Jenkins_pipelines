@@ -4,7 +4,7 @@ pipeline{
     stages{
         stage('CHECKOUT 1') {
             steps{                
-                echo "echeckout"
+                echo "checkout"
                 sh 'ls -lrt'
                 }                                               
             }
