@@ -27,7 +27,7 @@ pipeline{
                 echo "post action on failure"
             } 
             always {
-                echo "post action always"
+                
                 cleansWs()
             }
                 
