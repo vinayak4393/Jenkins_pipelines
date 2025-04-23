@@ -4,8 +4,8 @@ pipeline{
     stages{
         stage('CHECKOUT 1') {
             steps{                
-                catchError(stageResult:'FAILURE', buildResult:'SUCCESS'){
-                    sh 'exit 1'
+                echo "echeckout"
+                sh 'ls -lrt'
                 }                                               
             }
         }
@@ -16,7 +16,7 @@ pipeline{
                     pwd
                     git branch
                     ls -lrt
-                    exit 1
+                    
                 '''               
             }
         }
