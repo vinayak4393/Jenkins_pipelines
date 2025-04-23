@@ -19,12 +19,14 @@ pipeline{
                 '''               
             }
         }
-        post{
-            success{
+        post {
+            success {
                 echo "post action on success"
-            }failure{
+            } 
+            failure {
                 echo "post action on failure"
-            }always{
+            } 
+            always {
                 echo "post action always"
             }
         }     
